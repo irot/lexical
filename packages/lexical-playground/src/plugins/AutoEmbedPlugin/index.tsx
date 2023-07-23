@@ -25,6 +25,7 @@ import Button from '../../ui/Button';
 import {DialogActions} from '../../ui/Dialog';
 import {INSERT_FIGMA_COMMAND} from '../FigmaPlugin';
 import {INSERT_TWEET_COMMAND} from '../TwitterPlugin';
+import {INSERT_VANTIENT_QUEST_COMMAND} from '../VantientQuestPlugin';
 import {INSERT_YOUTUBE_COMMAND} from '../YouTubePlugin';
 
 interface PlaygroundEmbedConfig extends EmbedConfig {
@@ -146,10 +147,40 @@ export const FigmaEmbedConfig: PlaygroundEmbedConfig = {
   type: 'figma',
 };
 
+export const VantientQuestEmbedConfig: PlaygroundEmbedConfig = {
+  contentName: 'Vantient Quest',
+
+  exampleUrl: 'https://cmty.space/quest/abcdefGHIJKLmnopqrSTUVWXyz',
+
+  icon: <i className="icon vantient-quest" />,
+
+  insertNode: (editor: LexicalEditor, result: EmbedMatchResult) => {
+    editor.dispatchCommand(INSERT_VANTIENT_QUEST_COMMAND, result.id);
+  },
+
+  keywords: ['vantient', 'quest'],
+
+  parseUrl: (text: string) => {
+    const match = /^https:\/\/cmty\.space\/quest\/([\w]*)$/.exec(text);
+
+    if (match != null) {
+      return {
+        id: match[1],
+        url: match[0],
+      };
+    }
+
+    return null;
+  },
+
+  type: 'vantient-quest',
+};
+
 export const EmbedConfigs = [
   TwitterEmbedConfig,
   YoutubeEmbedConfig,
   FigmaEmbedConfig,
+  VantientQuestEmbedConfig,
 ];
 
 function AutoEmbedMenuItem({
