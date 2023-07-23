@@ -7,7 +7,8 @@
     "build-dev": "vite build",
     "build-prod": "vite build --config vite.prod.config.js",
     "build-vercel": "(cd ../../ && node ./scripts/build.js --prod) && npm run build-prod",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "vantient-proxy": "npx ts-node src/server/vantient.ts"
   },
   "dependencies": {
     "@excalidraw/excalidraw": "^0.14.2",
@@ -25,6 +26,7 @@
     "@lexical/selection": "0.11.3",
     "@lexical/table": "0.11.3",
     "@lexical/utils": "0.11.3",
+    "axios": "^1.4.0",
     "katex": "^0.15.2",
     "lexical": "0.11.3",
     "lodash-es": "^4.17.21",

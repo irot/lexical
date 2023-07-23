@@ -7,6 +7,7 @@
  */
 
 @import 'https://fonts.googleapis.com/css?family=Reenie+Beanie';
+@import 'https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600';
 
 body {
   margin: 0;
@@ -462,6 +463,10 @@ i.close {
 
 i.figma {
   background-image: url(images/icons/figma.svg);
+}
+
+i.vantient-quest {
+  background-image: url(images/icons/vantient-quest.svg);
 }
 
 i.poll {
